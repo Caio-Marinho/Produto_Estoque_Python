@@ -20,7 +20,7 @@ class Estoque:
             preco (float): Preço do produto.
             quantidade (int, opcional): Quantidade a ser adicionada (padrão = 1).
         """
-        novo = Produto(nome, preco, quantidade)
+        novo:Produto = Produto(nome, preco, quantidade)
         chave = nome.lower()  # usa o nome em minúsculas como chave para consistência
 
         # Se o produto ainda não existe, cria uma entrada com quantidade 0
