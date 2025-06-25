@@ -10,7 +10,7 @@ class Estoque:
         """
         self.produtos = {}
 
-    def adicionar_produto(self, nome:str, quantidade:int=1):
+    def adicionar_produto(self, nome:str, preco:float, quantidade:int=1):
         """
         Adiciona um produto ao estoque. Se o produto já existir (mesmo nome, case-insensitive),
         sua quantidade será incrementada. Caso contrário, ele será criado com a quantidade informada.
@@ -20,18 +20,18 @@ class Estoque:
             preco (float): Preço do produto.
             quantidade (int, opcional): Quantidade a ser adicionada (padrão = 1).
         """
+        novo = Produto(nome, preco, quantidade)
         chave = nome.lower()  # usa o nome em minúsculas como chave para consistência
-        novo = Produto(nome, self.produtos[chave].preco, quantidade)
 
         # Se o produto ainda não existe, cria uma entrada com quantidade 0
-        self.produtos.setdefault(chave, Produto(nome, self.produtos[chave].preco, 0))
+        self.produtos.setdefault(chave, Produto(nome, preco, 0))
 
         # Usa o método __iadd__ da classe Produto para somar quantidades
         self.produtos[chave] += novo
 
         print(f"📦 Produto atualizado/adicionado: {nome}")
     
-    def remover_produto(self, nome:str, preco:float, quantidade:int=1):
+    def remover_produto(self, nome:str, quantidade:int=1):
         """
         Remove um produto do estoque . Se o produto já existir (mesmo nome, case-insensitive),
         sua quantidade será decrementada. Caso contrário, ele será criado com a quantidade informada
@@ -41,8 +41,8 @@ class Estoque:
             preco (float): Preço do produto.
             quantidade (int, opcional): Quantidade a ser adicionada (padrão = 1).
         """ 
-        novo = Produto(nome, preco, quantidade)
         chave = nome.lower()  # usa o nome em minúsculas como chave para consistência
+        novo = Produto(nome, self.produtos[chave].preco, quantidade)
 
         if chave in self.produtos and self.produtos[chave].quantidade > 0:
             if self.produtos[chave].quantidade - novo.quantidade < 0:
