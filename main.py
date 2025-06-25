@@ -8,9 +8,9 @@ estoque.adicionar_produto("Celular", 2500)
 estoque.adicionar_produto("Celular", 2500,4)
 for item in estoque.listar():
     print(item)
-estoque.remover_produto("Notebook", 3500, 6)
+estoque.remover_produto("Notebook", 6)
 for item in estoque.listar():
     print(item)
-estoque.remover_produto("Notebook", 3500, 5)
+estoque.remover_produto("Notebook", 5)
 for item in estoque.listar():
     print(item)
