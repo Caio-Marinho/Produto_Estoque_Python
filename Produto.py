@@ -2,7 +2,7 @@ from typing import Self
 
 
 class Produto:
-    def __init__(self, nome:str, preco:float, quantidade:int):
+    def __init__(self, nome: str, preco: float, quantidade: int):
         """
         Inicializa um novo objeto Produto.
 
@@ -15,7 +15,7 @@ class Produto:
         self.preco = preco
         self.quantidade = quantidade
 
-    def __eq__(self, outro: Self):
+    def __eq__(self, outro: Self) -> bool:
         """
         Compara dois produtos com base no nome (ignorando letras maiúsculas/minúsculas).
 
@@ -27,7 +27,7 @@ class Produto:
         """
         return self.nome.lower() == outro.nome.lower()
 
-    def __hash__(self):
+    def __hash__(self) -> int:
         """
         Retorna o hash do nome do produto (em letras minúsculas) para garantir consistência
         com a comparação de igualdade.
@@ -37,7 +37,7 @@ class Produto:
         """
         return hash(self.nome.lower())
 
-    def __str__(self):
+    def __str__(self) -> str:
         """
         Retorna uma representação amigável do produto, adequada para exibição ao usuário.
 
@@ -46,7 +46,7 @@ class Produto:
         """
         return f"{self.nome} - R${self.preco:.2f} (Qtd: {self.quantidade})"
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         """
         Retorna uma representação detalhada do produto, útil para depuração e logs.
 
@@ -55,7 +55,7 @@ class Produto:
         """
         return f"Produto(nome={self.nome!r}, preco={self.preco}, quantidade={self.quantidade})"
 
-    def __iadd__(self, outro: Self):
+    def __iadd__(self, outro: Self) -> Self:
         """
         Implementa a operação de adição acumulativa (+=) entre dois produtos com o mesmo nome.
 
@@ -68,19 +68,18 @@ class Produto:
         if isinstance(outro, Produto) and self == outro:
             self.quantidade += outro.quantidade
         return self
-    
-    def __isub__(self, outro: Self):
+
+    def __isub__(self, outro: Self) -> Self:
         """
         Implementa a operação de subtração acumulativa (-=) entre dois produtos com
         o mesmo nome.
-        
-        Parametro:
+
+        Parâmetros:
             outro (Produto): Outro produto a ser subtraído.
-        
-        Retorno :
-            Produto: O próprio produto com a quantidade atualizada, caso os nomes coincidam
-        
-        """ 
+
+        Retorna:
+            Produto: O próprio produto com a quantidade atualizada, caso os nomes coincidam.
+        """
         if isinstance(outro, Produto) and self == outro:
             self.quantidade -= outro.quantidade
         return self
