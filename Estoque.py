@@ -3,7 +3,7 @@ from Produto import Produto
 
 
 class Estoque:
-    def __init__(self):
+    def __init__(self) -> None:
         """
         Inicializa um novo estoque vazio, utilizando um dicionário
         onde as chaves são os nomes dos produtos (em letras minúsculas)

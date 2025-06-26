@@ -2,7 +2,7 @@ from typing import Self
 
 
 class Produto:
-    def __init__(self, nome: str, preco: float, quantidade: int):
+    def __init__(self, nome: str, preco: float, quantidade: int) -> None:
         """
         Inicializa um novo objeto Produto.
 
