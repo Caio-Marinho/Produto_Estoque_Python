@@ -1,3 +1,4 @@
+from typing import Any, Generator
 from Produto import Produto
 
 
@@ -10,7 +11,7 @@ class Estoque:
         """
         self.produtos = {}
 
-    def adicionar_produto(self, nome:str, preco:float, quantidade:int=1):
+    def adicionar_produto(self, nome:str, preco:float, quantidade:int=1) -> None:
         """
         Adiciona um produto ao estoque. Se o produto já existir (mesmo nome, case-insensitive),
         sua quantidade será incrementada. Caso contrário, ele será criado com a quantidade informada.
@@ -31,7 +32,7 @@ class Estoque:
 
         print(f"📦 Produto atualizado/adicionado: {nome}")
     
-    def remover_produto(self, nome:str, quantidade:int=1):
+    def remover_produto(self, nome:str, quantidade:int=1) -> None:
         """
         Remove um produto do estoque . Se o produto já existir (mesmo nome, case-insensitive),
         sua quantidade será decrementada. Caso contrário, ele será criado com a quantidade informada
@@ -53,7 +54,7 @@ class Estoque:
         else:
             print(f"Produto {nome} não encontrado ou quantidade insuficiente")
 
-    def listar(self):
+    def listar(self) -> Generator[str, Any, None]:
         """
         Lista todos os produtos no estoque com suas quantidades e preços.
 
